@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "title": "Make Tax Simple for Every Nigerian",
+    "subtitle": "Learn, calculate, and pay your taxes easily - all in one place. Supporting both English and Pidgin.",
+    "cta1": "Calculate My Tax",
+    "cta2": "Learn How Tax Works"
+  },
+  "features": {
+    "title": "Everything You Need for Tax Compliance",
+    "items": {
+      "education": {
+        "title": "Tax Education",
+        "description": "Learn about Nigerian taxes in simple English and Pidgin with visuals and audio guides."
+      },
+      "calculator": {
+        "title": "Smart Calculator",
+        "description": "Calculate your federal and state taxes automatically using official tax brackets."
+      },
+      "payments": {
+        "title": "Secure Payments",
+        "description": "Pay directly to government accounts with instant receipts and SMS confirmations."
+      },
+      "security": {
+        "title": "Safe & Secure",
+        "description": "BVN/CAC verified with SSL encryption and NDPA-compliant data handling."
+      }
+    }
+  },
+  "problem": {
+    "title": "Tax Made Simple",
+    "description": "Many Nigerians find tax processes confusing with scattered information and complex procedures. EasyTax centralizes everything into one intuitive platform."
+  },
+  "target": {
+    "title": "For Every Nigerian",
+    "description": "Individual taxpayers, freelancers, and small business owners can all benefit from EasyTax."
+  },
+  "cta": {
+    "title": "Ready to Simplify Your Taxes?",
+    "description": "Join thousands of Nigerians who have simplified their tax compliance with EasyTax.",
+    "calculate": "Calculate Now",
+    "getStarted": "Get Started"
+  },
+  "footer": {
+    "description": "Making tax compliance simple, inclusive, and accessible to every Nigerian."
+  },
+  "navigation": {
+    "learn": "Learn",
+    "calculate": "Calculate",
+    "dashboard": "Dashboard"
+  },
+  "common": {
+    "serviceFee": "Service Fee",
+    "payments": "Payments",
+    "startCalculating": "Start Calculating",
+    "learnMore": "Learn More"
+  }
+}

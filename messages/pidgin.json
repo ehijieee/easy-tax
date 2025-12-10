@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "title": "We Go Help You Settle Your Tax Matter",
+    "subtitle": "Learn am, calculate am, pay am - everything dey one place. We support English and Pidgin well well.",
+    "cta1": "Calculate My Tax",
+    "cta2": "Learn How Tax Dey Work"
+  },
+  "features": {
+    "title": "Everything Wey You Need for Tax",
+    "items": {
+      "education": {
+        "title": "Tax Education",
+        "description": "Learn about Naija tax for simple English and Pidgin with pictures and audio wey go helep you."
+      },
+      "calculator": {
+        "title": "Smart Calculator",
+        "description": "Calculate your federal and state tax automatic - we use government tax brackets wey correct."
+      },
+      "payments": {
+        "title": "Safe Payment",
+        "description": "Pay direct to government account with instant receipt and SMS confirmation sharp sharp."
+      },
+      "security": {
+        "title": "Safe & Secure",
+        "description": "We verify BVN/CAC, use SSL encryption, and we dey follow NDPA rules well well."
+      }
+    }
+  },
+  "problem": {
+    "title": "We Don Make Tax Easy",
+    "description": "Plenty Naija people dey find tax palava confusing with information wey dey scatter everywhere. EasyTax don put everything together for one easy platform."
+  },
+  "target": {
+    "title": "For Every Naija Person",
+    "description": "Whether you be individual taxpayer, freelancer, or small business owner - EasyTax go helep you well well."
+  },
+  "cta": {
+    "title": "You Don Ready to Make Your Tax Easy?",
+    "description": "Join thousands of Naija people wey don make their tax easy with EasyTax.",
+    "calculate": "Calculate Now",
+    "getStarted": "Start Now"
+  },
+  "footer": {
+    "description": "We dey make tax compliance simple, inclusive, and accessible to every Naija person."
+  },
+  "navigation": {
+    "learn": "Learn",
+    "calculate": "Calculate",
+    "dashboard": "Dashboard"
+  },
+  "common": {
+    "serviceFee": "Service Fee",
+    "payments": "Payment",
+    "startCalculating": "Start to Calculate",
+    "learnMore": "Learn More Tin"
+  }
+}

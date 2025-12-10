@@ -1,0 +1,241 @@
+{
+    "product_name": "EasyTax",
+    "overview": {
+      "goal": "EasyTax is a taxtech platform designed to make tax compliance simple, inclusive, and accessible to every Nigerian. It allows users to learn about taxes, calculate what they owe, and pay directly to official tax agencies — all in one place.",
+      "problem_statement": "Many Nigerians find tax processes confusing, with scattered information, manual filing, and complex payment procedures that discourage compliance.",
+      "solution": "EasyTax centralizes tax education, computation, and payments into one intuitive web platform. It supports both English and Pidgin, uses icons and audio to simplify learning, and lets users calculate, pay, and track taxes seamlessly.",
+      "target_users": "Individual taxpayers, freelancers, and small business owners (SMEs) across Nigeria seeking a simpler way to understand, calculate, and pay their taxes.",
+      "goals": [
+        "Simplify tax learning for everyday Nigerians.",
+        "Help users calculate federal and state taxes easily.",
+        "Allow users to pay securely to government accounts.",
+        "Provide a dashboard for tax tracking and reminders.",
+        "Support multilingual and accessible usage for low-literate users."
+      ]
+    },
+    "core_features": {
+      "tax_education_portal": {
+        "description": "Educates users on tax concepts in simple English and Pidgin using visuals and audio aids.",
+        "features": [
+          "Explains major Nigerian tax types (Personal Income Tax, PAYE, Company Income Tax).",
+          "Pidgin and English versions available.",
+          "Uses infographics, short videos, and voice narration.",
+          "FAQ section for common tax questions."
+        ]
+      },
+      "interactive_tax_calculator": {
+        "description": "Step-by-step calculator that helps users determine applicable taxes.",
+        "features": [
+          "Inputs: income, occupation, and business type.",
+          "Automatically computes estimated tax liability using official brackets.",
+          "Supports federal (FIRS) and state (e.g., LIRS) taxes.",
+          "Guest users can access this feature freely."
+        ]
+      },
+      "tax_payment_integration": {
+        "description": "Allows users to pay taxes directly to official government accounts.",
+        "features": [
+          "Integrates with Paystack or Flutterwave for secure transactions.",
+          "Automatically routes funds to official government accounts.",
+          "Applies a ₦600 service commission per transaction.",
+          "Generates instant digital receipts with SMS and email confirmation."
+        ]
+      },
+      "user_dashboard": {
+        "description": "Dashboard for subscribed users to manage their tax profile and payments.",
+        "features": [
+          "Shows payment history and receipts.",
+          "Tracks upcoming deadlines and reminders.",
+          "Provides downloadable reports.",
+          "Offers voice guidance (English and Pidgin).",
+          "Subscription-based access for advanced features (₦ yearly)."
+        ]
+      },
+      "multi_language_accessibility": {
+        "description": "Ensures inclusivity for all Nigerians regardless of literacy level.",
+        "features": [
+          "Supports English and Pidgin interface.",
+          "Includes text-to-speech and audio explanations.",
+          "Uses large icons and minimal text.",
+          "Auto-detects user device language or location."
+        ]
+      },
+      "admin_dashboard": {
+        "description": "Enables admins to manage content, analytics, and tax rules.",
+        "features": [
+          "View total users, transactions, and feedback.",
+          "Add or edit educational content (text, video, audio).",
+          "Update tax rates and rules.",
+          "Access analytics dashboard for performance insights."
+        ]
+      }
+    },
+    "subscription_model": {
+      "description": "Users can subscribe yearly to unlock premium features like voice guidance, automatic filing, and full dashboard access.",
+      "type": "Yearly subscription",
+      "benefits": [
+        "Access to tax reminders and records.",
+        "Automatic filing support.",
+        "Speech/voice guidance features."
+      ]
+    },
+    "tech_stack": {
+      "frontend": ["React.js", "Next.js", "TailwindCSS"],
+      "backend": ["Node.js", "Next.js API Routes"],
+      "database": "Supabase (PostgreSQL)",
+      "hosting": "Vercel",
+      "payment_gateway": ["Paystack", "Flutterwave"],
+      "ai_provider": "OpenAI API (Phase 2 Chatbot)",
+      "security": ["SSL Encryption", "NDPA-compliant Data Handling", "BVN/CAC Verification"]
+    },
+    "database_schema": {
+      "users": {
+        "purpose": "Stores user information for authentication and subscriptions.",
+        "columns": {
+          "id": "UUID PRIMARY KEY DEFAULT gen_random_uuid()",
+          "email": "VARCHAR(255) UNIQUE NOT NULL",
+          "password_hash": "TEXT NOT NULL",
+          "full_name": "VARCHAR(255)",
+          "bvn": "VARCHAR(20)",
+          "cac_number": "VARCHAR(20)",
+          "subscription_status": "BOOLEAN DEFAULT false",
+          "subscription_expiry": "DATE",
+          "created_at": "TIMESTAMP WITH TIME ZONE DEFAULT now()"
+        }
+      },
+      "tax_calculations": {
+        "purpose": "Stores user tax calculation results and inputs.",
+        "columns": {
+          "id": "UUID PRIMARY KEY DEFAULT gen_random_uuid()",
+          "user_id": "UUID REFERENCES users(id)",
+          "income": "NUMERIC",
+          "business_type": "VARCHAR(255)",
+          "occupation": "VARCHAR(255)",
+          "federal_tax": "NUMERIC",
+          "state_tax": "NUMERIC",
+          "created_at": "TIMESTAMP WITH TIME ZONE DEFAULT now()"
+        }
+      },
+      "payments": {
+        "purpose": "Stores all tax payment transactions made by users.",
+        "columns": {
+          "id": "UUID PRIMARY KEY DEFAULT gen_random_uuid()",
+          "user_id": "UUID REFERENCES users(id)",
+          "amount": "NUMERIC NOT NULL",
+          "commission": "NUMERIC DEFAULT 600",
+          "government_account": "VARCHAR(255)",
+          "payment_reference": "VARCHAR(255)",
+          "receipt_url": "TEXT",
+          "status": "VARCHAR(50)",
+          "created_at": "TIMESTAMP WITH TIME ZONE DEFAULT now()"
+        }
+      },
+      "educational_content": {
+        "purpose": "Stores articles, infographics, videos, and FAQs for the education portal.",
+        "columns": {
+          "id": "UUID PRIMARY KEY DEFAULT gen_random_uuid()",
+          "title": "VARCHAR(255)",
+          "language": "VARCHAR(50)",
+          "content_type": "VARCHAR(50)",
+          "content_url": "TEXT",
+          "created_at": "TIMESTAMP WITH TIME ZONE DEFAULT now()"
+        }
+      },
+      "admin": {
+        "purpose": "Stores admin access credentials.",
+        "columns": {
+          "id": "UUID PRIMARY KEY DEFAULT gen_random_uuid()",
+          "email": "VARCHAR(255) UNIQUE NOT NULL",
+          "password_hash": "TEXT NOT NULL",
+          "role": "VARCHAR(50) DEFAULT 'admin'"
+        }
+      }
+    },
+    "security_and_privacy": {
+      "authentication": "Supabase Auth for secure login and signup.",
+      "verification": "BVN and CAC verification for identity confirmation.",
+      "row_level_security": "Enabled to ensure users access only their data.",
+      "data_privacy": "Complies with Nigerian Data Protection Act (NDPA).",
+      "encryption": "All communications secured via SSL/TLS."
+    },
+    "ui_ux_design": {
+      "style": "Clean, modern, and accessible.",
+      "colors": {
+        "primary": "#2563eb",
+        "secondary": "#64748b",
+        "accent": "#22c55e",
+        "background": "#f8fafc"
+      },
+      "key_pages": [
+        "Homepage (Call to Action: 'Calculate My Tax' / 'Learn How Tax Works')",
+        "Tax Education Portal (English & Pidgin Tabs)",
+        "Interactive Calculator Page",
+        "Login / Register Page",
+        "User Dashboard (Payments, History, Reminders)",
+        "Admin Dashboard (Content & Analytics)"
+      ],
+      "aesthetics": [
+        "Use illustrations of everyday Nigerians (e.g., traders, SMEs, workers).",
+        "Large icons, minimal text, and responsive design for mobile devices."
+      ]
+    },
+    "deployment": {
+      "platform": "Vercel",
+      "environment_variables": [
+        "SUPABASE_URL",
+        "SUPABASE_ANON_KEY",
+        "PAYSTACK_SECRET_KEY",
+        "FLUTTERWAVE_SECRET_KEY",
+        "OPENAI_API_KEY"
+      ]
+    },
+    "phase_2_features": {
+      "ai_chatbot": {
+        "description": "AI-powered tax assistant using OpenAI GPT-4o-mini to answer user questions in English and Pidgin."
+      },
+      "referral_system": {
+        "description": "Reward system allowing users to earn bonuses or wallet credits for referring others."
+      },
+      "partner_dashboard": {
+        "description": "Portal for state tax authorities to track payments and compliance."
+      }
+    },
+    "readme": {
+      "title": "EasyTax - README",
+      "content": [
+        "## Overview",
+        "EasyTax simplifies Nigerian tax education, computation, and payment.",
+        "## Setup",
+        "1. Clone this repository.",
+        "2. Create a `.env.local` file with Supabase, Payment, and OpenAI keys.",
+        "3. Run `npm install` to install dependencies.",
+        "4. Start the dev server using `npm run dev`.",
+        "## Tech Stack",
+        "- Next.js, React, TailwindCSS",
+        "- Supabase (Database & Auth)",
+        "- Paystack / Flutterwave (Payments)",
+        "- OpenAI API (Chatbot - Phase 2)",
+        "## Deployment",
+        "Deployed on Vercel with secure environment variables."
+      ]
+    },
+    "env_file": {
+      "SUPABASE_URL": "your-supabase-url-here",
+      "SUPABASE_ANON_KEY": "your-supabase-anon-key-here",
+      "PAYSTACK_SECRET_KEY": "your-paystack-secret-key-here",
+      "FLUTTERWAVE_SECRET_KEY": "your-flutterwave-secret-key-here",
+      "OPENAI_API_KEY": "your-openai-api-key-here"
+    },
+    "change_log": {
+      "version": "1.0.0",
+      "changes": [
+        "Initial PRD for EasyTax created.",
+        "Added multilingual (English & Pidgin) support.",
+        "Defined ₦600 transaction commission.",
+        "Introduced yearly subscription for premium users.",
+        "Included BVN/CAC verification.",
+        "Outlined Phase 2 AI chatbot and referral system."
+      ]
+    }
+  }
+  
