@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { LoginForm } from '@/components/auth/login-form'
 import { Button } from '@/components/ui/button'
 import { Volume2, VolumeX } from 'lucide-react'
@@ -46,7 +46,9 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <LoginForm language={language} />
+        <Suspense fallback={<div className="bg-white rounded-lg shadow-sm p-8 text-center">Loading...</div>}>
+          <LoginForm language={language} />
+        </Suspense>
       </div>
     </div>
   )
